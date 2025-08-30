@@ -1,0 +1,1522 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Raleway:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Bicubik — used ONLY for the main hero title */
+@font-face{
+  font-family:'Bicubik';
+  src:
+    local('Bicubik'),
+    local('Bicubik Regular'),
+    url('../fonts/Bicubik.OTF') format('opentype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+  unicode-range: U+0000-00FF, U+0400-04FF; /* latin + cyrillic */
+}
+/* Reusable outlined black button (same as in cases) */
+.btn-black{
+  background:transparent;
+  border:1px solid rgba(17,17,17,.8);
+  color:#111;
+  text-transform:uppercase;
+  font-family:'Manrope', sans-serif;
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.08em;
+  padding:.55rem 1.05rem;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+  box-shadow:none;
+  border-radius:0;
+  white-space:nowrap;
+}
+.btn-black:hover{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+
+/* Contacts footer CTA on the right side */
+#contacts .imprint{
+  text-align:right;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:.6rem;
+  height:100%;
+  justify-content:flex-end; /* align all to bottom */
+}
+#contacts .imprint .footer-cta{
+  margin-top:.6rem; /* slight gap above button */
+  align-self:flex-end;
+}
+@media (max-width:680px){
+  #contacts .imprint{
+    align-items:flex-start;
+    text-align:left;
+    gap:0 !important;            /* remove vertical gap on mobile */
+  }
+}
+/* === Footer CTA pin — always stays at the bottom of the imprint column === */
+#contacts .imprint{ position:relative; }
+#contacts .imprint .footer-cta{
+  display:inline-flex;               /* button sizing like other CTAs */
+  margin-top:auto;                   /* push it to the bottom of the column */
+  align-self:flex-end;               /* right edge on desktop */
+  margin-left:0 !important;          /* never center via auto margins */
+  margin-right:0 !important;
+}
+@media (max-width:680px){
+  /* on phones the column is left-aligned; keep CTA left and at the bottom */
+  #contacts .imprint{ align-items:flex-start; }
+  #contacts .imprint .footer-cta{
+    align-self:flex-start;           /* left edge */
+    /* Move CTA directly after email link instead of pinned to the bottom */
+    margin-top: .6rem !important;
+  }
+}
+:root{
+  --black:#0E0E0E;
+  --gold:#CBB07A;
+  --title-min:38px; --title-prefer:6vw; --title-max:88px;
+  --h2-min:30px; --h2-prefer:3.8vw; --h2-max:52px;
+  --h3-min:22px; --h3-prefer:2.6vw; --h3-max:38px;
+  --body-min:16px; --body-prefer:1.2vw; --body-max:20px;
+  --divider-lift-d: 1.35rem;
+  --divider-lift-t: 1.1rem;
+  --divider-lift-m: 0.7rem;
+}
+html,body{margin:0;padding:0;background:#fff;color:#000;font-family:'Space Grotesk',system-ui,Arial,sans-serif}
+.font-title{ font-family:'Space Grotesk', system-ui, Arial, sans-serif; font-weight:500; }
+ .type-title{
+  font-family:'Space Grotesk', system-ui, Arial, sans-serif;
+  font-weight:700;
+  font-size: clamp(28px, 4.5vw, 64px);
+  line-height:1.08;
+  letter-spacing:-.01em;
+  color:var(--black);
+}
+
+
+/* Force hero headline to always wrap in exactly two lines across breakpoints */
+.hero .type-title{
+  text-wrap: balance;        /* nicer line distribution */
+  hyphens: auto;             /* allow soft hyphenation if needed */
+  word-break: normal;        /* avoid breaking words in the middle */
+  max-width: 28ch;           /* tuned for 2 lines on desktop */
+  line-height: 1;            /* poster-tight for Bicubik */
+  letter-spacing: 0;         /* denser tracking for Bicubik */
+}
+
+/* Mobile boost: make the hero title slightly larger only on small screens */
+@media (max-width:680px){
+  .hero .type-title{
+    font-size: clamp(32px, 8.2vw, 44px); /* bigger but still two lines */
+  }
+}
+
+/* Use Bicubik ONLY for the main hero headline */
+.hero .type-title{
+  font-family:'Bicubik', 'Space Grotesk', system-ui, Arial, sans-serif !important;
+  font-weight:400 !important;                   /* Bicubik is single-weight */
+  letter-spacing:0;                             /* tight tracking for Bicubik */
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/* helper: apply Bicubik only inside hero explicitly */
+.hero h1.font-title.type-title{ font-family:'Bicubik', 'Space Grotesk', system-ui, Arial, sans-serif !important; }
+
+
+@media (min-width:1600px){
+  .hero .type-title{ max-width:26ch; }   /* ultra-wide: a bit narrower */
+}
+@media (max-width:900px){
+  .hero .type-title{ max-width:30ch; }   /* tablets */
+}
+@media (max-width:560px){
+  .hero .type-title{ max-width:32ch; }   /* phones: allow more chars per line */
+}
+
+
+
+@media (min-width: 1200px){
+  .type-title{ line-height:1.06; }
+}
+/* ==== Mobile header polish (compact, consistent spacing) ==== */
+:root{
+  --header-mobile-h: 56px;
+  --gutter-m: 16px;
+}
+@media (max-width:680px){
+  .site-header{
+    padding-top: env(safe-area-inset-top);
+    background:#fff;
+    border-bottom:1px solid #eee;
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+  }
+  .header-inner{
+    height: var(--header-mobile-h);
+    min-height: var(--header-mobile-h);
+    padding: 0 var(--gutter-m);
+    gap: .75rem;
+  }
+  .brand{
+    font-size: 12px;
+    letter-spacing: .22em;
+    margin-right: auto;
+  }
+  .nav-wrap{ gap: .75rem; }
+  .lang-switch button{ padding: 6px; font-size: 11px; }
+  /* keep hero clear of fixed header (includes iOS safe area) */
+  .hero{ padding-top: calc(var(--header-mobile-h) + env(safe-area-inset-top) + 8px) !important; }
+}
+@media (max-width: 680px){
+  .type-title{ line-height:1.0; }
+}
+.type-h2{
+  font-family:'Space Grotesk', system-ui, Arial, sans-serif;
+  font-weight:600;
+  font-size:clamp(var(--h2-min),var(--h2-prefer),var(--h2-max));
+  line-height:1.06;
+  letter-spacing:-.006em;
+  color:var(--black);
+}
+.type-h3{
+  font-family:'Space Grotesk', system-ui, Arial, sans-serif;
+  font-weight:600;
+  font-size:clamp(var(--h3-min),var(--h3-prefer),var(--h3-max));
+  line-height:1.08;
+  color:var(--black);
+}
+.type-body{line-height:1.62; font-weight:200; color:#2b2b2b;}
+
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+/* Header */
+.site-header{ position:fixed; top:0; left:0; right:0; background:#fff; z-index:50; border-bottom:1px solid #eee; }
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1.75rem 3rem;
+}
+.brand{
+  letter-spacing:.22em;
+  font-size:11px;
+  text-transform:uppercase;
+  margin-right:auto;
+  font-family:'Space Grotesk', system-ui, Arial, sans-serif;
+  font-weight:600;
+}
+.main-nav{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:2.2rem;
+  flex-wrap:nowrap;
+}
+.main-nav a{margin:0 .9rem;text-transform:uppercase;font-size:12px;letter-spacing:.18em;text-decoration:none;color:#111}
+.main-nav a:hover{opacity:.8}
+.lang-switch{ position:relative; margin-left:1rem; }
+.lang-switch button{ background:none; border:none; cursor:pointer; padding:4px 6px; display:flex; align-items:center; gap:6px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#111; font-family:'Space Grotesk', system-ui, Arial, sans-serif; font-weight:400; }
+.site-header .container{ max-width:100%; padding:0 2rem; }
+.nav-wrap{ display:flex; align-items:center; gap:2.2rem; margin-left:auto; }
+.lang-switch svg{ width:18px; height:18px; stroke:#111; }
+.lang-switch ul{
+  list-style:none; margin:0; padding:0; position:absolute; top:120%; right:0; background:#fff; border:1px solid #ddd; display:none; min-width:92px; z-index:10;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  opacity:0; transform:translateY(-6px); transition:opacity .18s ease, transform .18s ease;
+}
+.lang-switch ul li a{ display:block; padding:6px 10px; text-decoration:none; color:#111; font-size:12px; letter-spacing:.18em; text-transform:uppercase; font-family:'Space Grotesk', system-ui, Arial, sans-serif; font-weight:400; }
+.lang-switch ul li a:hover{ background:#f5f5f5; }
+.lang-switch.open ul{ display:block; opacity:1; transform:translateY(0); }
+
+/* Grid bg */
+.grid-bg{background-image:linear-gradient(to right, rgba(0,0,0,.05) 1px, transparent 1px),linear-gradient(to bottom, rgba(0,0,0,.03) 1px, transparent 1px);background-size:96px 100%,100% 96px}
+
+
+/* Hero */
+.hero{padding-top:80px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:2rem;align-items:start}
+@media(min-width:900px){.hero-grid{grid-template-columns:2fr 1fr}}
+
+@media (max-width:680px){
+  .hero-grid{
+    gap:1rem;
+  }
+}
+
+/* Tighten space below hero and make the next section start sooner */
+/* Tighten space below hero — sit right on the divider baseline */
+.hero{ padding-bottom:0; }
+.hero + .section{ padding-top:2rem; }
+
+/* ==== Tighten bottom gap under hero (container + mobile fine-tune) ==== */
+.container.hero-grid{ 
+  margin-bottom: 0 !important;   /* no extra space under hero grid on mobile */
+}
+/* cancel tiny downshift on the CTAs that was adding perceived space */
+@media (max-width: 680px){
+  .hero-ctas{ 
+    transform: none !important; 
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;          /* zero bottom gap under the buttons */
+  }
+  /* reduce initial padding for the next section on phones */
+  .hero + .section{ 
+    padding-top: .4rem !important;        /* start the next section closer */
+  }
+}
+
+@media(max-width:900px){
+  .hero{ padding-bottom:0; }
+  .hero + .section{ padding-top:2rem; }
+}
+.eyebrow{text-transform:uppercase;letter-spacing:.22em;color:#6b6b6b;font-size:11px}
+.trust{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 18px;
+  margin-top:1.25rem;
+  width:auto;                      /* desktop/tablet: fit content */
+  margin-left:0;
+  box-sizing:border-box;
+  justify-content:flex-start;      /* natural flow on wide screens */
+}
+
+@media (max-width:680px){
+  .trust{
+    width:100% !important;
+    justify-content:space-between !important;
+  }
+}
+.trust span{ text-transform:uppercase; letter-spacing:.22em; font-size:11px; color:#6b6b6b; }
+.signature-line{height:0.5px;background:var(--black);margin-top:.5rem}
+.hero-body{max-width:48ch}
+.hero-ctas{
+  display:flex;
+  gap:1.2rem;
+  align-items:center;
+  position:relative;
+  padding-bottom:0;
+  transform:translateY(6px);
+}
+.btn{display:inline-block;text-decoration:none}
+.btn-gold{
+  background:var(--gold);
+  color:var(--black);
+  padding:0.9rem 2rem;                 /* трохи компактніше по висоті */
+  border:1px solid rgba(0,0,0,.06);    /* тонкий контур для преміум-виду */
+  border-radius:6px;                    /* легке скруглення */
+  font-weight:700;                      /* трішки жирніше */
+  text-transform:uppercase;
+  font-size:13px;
+  letter-spacing:.15em;                 /* на волосок менше трекінгу */
+  display:inline-flex; align-items:center; gap:.6rem;
+  text-decoration:none;
+  transition:transform .22s ease, box-shadow .22s ease, background-color .22s ease, color .22s ease, border-color .22s ease;
+  box-shadow:0 3px 10px rgba(0,0,0,.10);
+  will-change: transform;
+}
+.btn-gold:hover{
+  background:#d3b47b;                   /* на півтону світліше */
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,0,0,.16);
+  border-color:rgba(0,0,0,.12);
+}
+.btn-gold:active{
+  transform:translateY(0);
+  box-shadow:0 3px 8px rgba(0,0,0,.12);
+}
+/* Keyboard focus ring */
+.btn-gold:focus-visible{
+  outline:2px solid #111;               /* чіткий контур на золотому */
+  outline-offset:2px;
+}
+
+/* --- Keep CTA labels on a single line everywhere --- */
+.btn,
+.btn-gold,
+.cta-link{
+  white-space: nowrap !important;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  min-width: max-content;       /* expand box to fit text */
+}
+
+/* Prevent line breaks inside hero divider CTAs */
+.section-divider .actions .btn-gold,
+.section-divider .actions .cta-link{ white-space:nowrap; }
+
+/* Reduced motion: відключаємо підстрибування */
+@media (prefers-reduced-motion: reduce){
+  .btn-gold{ transition:none; }
+  .btn-gold:hover{ transform:none; box-shadow:0 4px 10px rgba(0,0,0,.14); }
+}
+.cta-link{display:inline-flex;gap:.6rem;align-items:center;text-transform:uppercase;font-size:12px;letter-spacing:.18em;color:#555;text-decoration:none}
+.cta-link:hover{opacity:.85}
+
+/* — Make text CTA look like an outlined button next to the gold one — */
+.section-divider .actions .cta-link{
+  border:3px solid #111;            /* thicker outline like in cases */
+  background:#fff;                  /* white background */
+  color:#111;                       /* dark label */
+  height:48px;                      /* a bit taller */
+  padding:0 22px;                   /* wider inside spacing */
+  border-radius:0;                  /* square corners */
+  display:inline-flex;              /* vertical centering */
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;             /* no underline */
+  text-transform:uppercase;         /* editorial uppercase */
+  font:700 13px/1 'Manrope','Inter',system-ui,sans-serif; /* strong weight */
+  letter-spacing:.16em;             /* tracking */
+  min-width:max-content;            /* keep one line */
+  box-shadow:none;                  /* no shadows */
+  white-space:nowrap;               /* never wraps */
+}
+.section-divider .actions .cta-link:hover{
+  background:#111;                  /* invert on hover */
+  color:#fff;
+  border-color:#111;
+}
+
+/* Tighten perceived gap between actions row and tags a touch */
+.section-divider .tags{ margin-top:.1rem; }
+.arrow-thin{width:48px;height:20px}
+.arrow-thin path{stroke:#111;stroke-width:1;stroke-linecap:round;fill:none;stroke-dasharray:48;stroke-dashoffset:48;transition:stroke-dashoffset .45s ease}
+.cta-link:hover .arrow-thin path, .btn-gold:hover + .arrow-thin path, .scroll-link:hover .arrow-thin path{stroke-dashoffset:0}
+.scroll-link{margin-top:1.5rem;display:inline-flex;gap:.6rem;align-items:center;text-transform:uppercase;font-size:11px;letter-spacing:.2em;color:#6b6b6b;text-decoration:none}
+.arrow-thin.rotate{transform:rotate(90deg)}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end}
+.vr{width:1px;height:220px;background:#d6d6d6}
+.caption{margin-left:1rem;color:#666; margin-bottom: 0.25em;}
+
+/* Sections */
+.section{
+  padding:7rem 0 0;
+  border-top:1px solid #e6e6e6;
+}
+.grid-2{display:grid;grid-template-columns:1fr;gap:2rem}
+@media(min-width:900px){.grid-2{grid-template-columns:1.3fr 1fr}}
+.bullets{list-style:none;padding:0;margin:0}
+.bullets li{margin-bottom:.5rem}
+
+/* =================  SECTION DIVIDER — CLEANED ================= */
+:root{
+  --divider-lift-d: 1.35rem;
+  --divider-lift-t: 1.1rem;
+  --divider-lift-m: .7rem;
+}
+
+/* one top border, actions sit ON it; tags live UNDER it */
+.section-divider{
+  width:100%;
+  border-top:1px solid #e6e6e6;
+  padding:0;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  grid-template-areas:
+    "actions . meta"
+    "tags tags tags";
+  align-items:end;
+  row-gap:0; /* no vertical slack */
+}
+
+/* lift actions so button bottom rests exactly on the border */
+.section-divider .actions{
+  grid-area:actions;
+  position:relative;
+  margin:0 !important;
+  transform:translateY(calc(var(--divider-lift-d) * -1));
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  flex-wrap:nowrap;            /* keep 1 row */
+  white-space:nowrap;          /* keep labels single-line */
+  margin-bottom:-1px;          /* visually sit on the border */
+}
+.section-divider .actions > *{ flex:0 0 auto; white-space:nowrap; }
+
+/* meta on the right, same baseline */
+.section-divider .meta{
+  grid-area:meta;
+  align-self:end;
+  text-align:right;
+  color:#7a7a7a;
+}
+.section-divider .meta small{
+  display:block; margin-top:.6rem; text-transform:uppercase; letter-spacing:.22em; font-size:11px; color:#9a9a9a;
+}
+
+/* tags UNDER the baseline, perfect stretch to container edges */
+/* keep one row, equal edges, and auto‑shrink on tighter widths */
+.section-divider .tags{
+  grid-area:tags;
+  display:flex;
+  align-items:center;
+  /* equal space between all items and equal space on the edges */
+  justify-content:space-between;
+  gap:clamp(6px,1.2vw,14px);
+  padding-top:0 !important;
+  margin-top:.05rem; /* tight */
+  width:100%;
+  line-height:1;
+  flex-wrap:nowrap;
+  padding-inline:0; /* don't inherit; keep exact container width */
+}
+/* add ghost columns on the sides so the first/last have the same offset
+   as the inner items — creates perfectly equal edge spacing */
+.section-divider .tags::before,
+.section-divider .tags::after{
+  content:"";
+  flex:1 1 0;
+}
+
+/* each real tag is a flexible, centered column, with responsive type */
+.section-divider .tags span{
+  flex:1 1 0;
+  text-align:center;
+  white-space:nowrap;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:clamp(10px,1.05vw,12px);
+  color:#999;
+  transition:color .25s ease, text-decoration .25s ease;
+}
+.section-divider .tags span:hover{ color:#333; text-decoration:underline; }
+
+/* secondary CTA = real outlined button (case-style), regardless of class) */
+.section-divider .actions > a:not(.btn-gold),
+.section-divider .actions > button:not(.btn-gold),
+.section-divider .actions > .cta-link{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  height:44px !important;
+  padding:0 16px !important;
+  background:#fff !important;
+  color:#111 !important;
+  border:2px solid #111 !important;
+  border-radius:0 !important;
+  font:600 12px/1 'Manrope','Inter',system-ui,sans-serif !important;
+  text-transform:uppercase !important;
+  letter-spacing:.14em !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+  min-width:max-content !important;
+  box-shadow:none !important;
+}
+.section-divider .actions > a:not(.btn-gold):hover,
+.section-divider .actions > button:not(.btn-gold):hover,
+.section-divider .actions > .cta-link:hover{ background:#111 !important; color:#fff !important; border-color:#111 !important; }
+
+/* tablet: slightly smaller lift */
+@media (max-width:1024px){
+  .section-divider{ grid-template-columns:1fr; }
+  .section-divider .actions{ transform:translateY(calc(var(--divider-lift-t) * -1)); }
+  .section-divider .meta{ text-align:left; padding-top:.9rem !important; }
+}
+
+/* mobile: compact buttons, tighter spacing, keep single row */
+@media (max-width:560px){
+  .section-divider .actions{ gap:.35rem; transform:translateY(calc(var(--divider-lift-m) * -1)); }
+  .section-divider .actions > .btn-gold{ height:36px !important; padding:0 12px !important; font-size:10px !important; letter-spacing:.12em !important; }
+  .section-divider .actions > a:not(.btn-gold),
+  .section-divider .actions > button:not(.btn-gold),
+  .section-divider .actions > .cta-link{ height:36px !important; padding:0 12px !important; font-size:10px !important; letter-spacing:.12em !important; }
+  .section-divider .tags{ gap:clamp(4px,1.2vw,10px); }
+}
+/* =================  END SECTION DIVIDER — CLEANED ================= */
+
+.container.grid-2{
+  grid-template-columns: 1.45fr .95fr;
+  column-gap: 5rem;
+  align-items: start;
+}
+.container.grid-2 > :first-child{ max-width: 720px; }
+.container.grid-2 .type-h2{ margin:0 0 1rem; letter-spacing:-.01em; line-height:1.08; }
+.container.grid-2 .type-body{ color:#333; }
+
+/* Right column as editorial list */
+.container.grid-2 > :nth-child(2){
+  border-left:1px solid #eaeaea;
+  padding-left:2rem;
+  align-self:end; /* опускаємо ВЕСЬ блок правої колонки на дно рядка гріда */
+  display:block;
+}
+.container.grid-2 .bullets{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1rem; }
+.container.grid-2 .bullets li{ margin:0; color:#2d2d2d; line-height:1.55; position:relative; padding-left:1.1rem; }
+.container.grid-2 .bullets li::before{ content:"—"; position:absolute; left:0; top:0; color:#a8a8a8; }
+
+@media(max-width:899px){
+  .container.grid-2{ grid-template-columns:1fr; column-gap:0; row-gap:2rem; }
+  .container.grid-2 > :nth-child(2){ border-left:none; padding-left:0; }
+  .container.grid-2 > :nth-child(2){ display:block; }
+}
+
+/* Remove bottom space after the last intro paragraph (left column) */
+.container.grid-2 > :first-child .type-body:last-child{
+  margin-bottom: 0 !important;
+}
+
+/* Ensure divider spans full container width */
+.section-divider{ width:100%; }
+
+.cases-grid{display:grid;grid-template-columns:1fr;gap:3.2rem}
+@media(min-width:900px){.cases-grid{grid-template-columns:1fr 1fr}}
+
+.case{
+  position:relative;
+  overflow:hidden;
+  border:none;
+  aspect-ratio:16/9; /* стабільна висота */
+  background:#f7f7f7;
+}
+/* Removed .case::before decorative gold line */
+
+.case .bg{position:absolute;inset:0;z-index:0}
+.case img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(100%);
+  opacity:1;
+  transform:scale(1.02);
+  transition:transform .7s ease, filter .6s ease;
+}
+.case:hover img{
+  transform:scale(1.06) translateY(-1%);
+  filter:grayscale(0%);
+  transition:transform 1s ease, filter .6s ease;
+}
+
+/* темний градієнт знизу для читабельності, без впливу на лейаут */
+.case::after{ display:none; }
+
+/* контент як абсолют, поверх градієнта */
+.case .content{
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  min-height:55%;
+  padding:2.2rem 2rem 4.4rem;
+  display:flex; flex-direction:column; gap:1rem; justify-content:flex-end;
+  /* the panel will live on ::before; keep content transparent */
+  background:transparent;
+  will-change: transform, opacity;
+  transition: transform .8s cubic-bezier(.2,.8,.2,1), opacity .8s cubic-bezier(.2,.8,.2,1);
+  align-items:flex-start;
+}
+.case .content h3{
+  margin:0 0 .5rem;
+  font-family:'Manrope', 'Inter', sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:17px;
+  color:#111;
+}
+.case .content p{
+  margin:0 0 1.1rem;
+  font-family:'Inter', sans-serif;
+  font-weight:400;
+  font-size:13px;
+  line-height:1.55;
+  color:#5a5a5a;
+}
+.case .content::before{
+  content:"";
+  position:absolute; inset:0;
+  background:rgba(255,255,255,.80);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 8px 24px rgba(0,0,0,.22);
+  z-index:-1; /* behind text and button */
+  will-change: clip-path, opacity, backdrop-filter, transform;
+  clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+  transition:
+    clip-path .5s cubic-bezier(.2,.8,.2,1),
+    opacity .5s cubic-bezier(.2,.8,.2,1),
+    -webkit-backdrop-filter .5s cubic-bezier(.2,.8,.2,1),
+    backdrop-filter .5s cubic-bezier(.2,.8,.2,1),
+    box-shadow .5s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Updated hover effect: keep button visible */
+.case:hover .content{ transform:translateY(8px) scale(.99); opacity:1; }
+.case:hover .content h3,
+.case:hover .content p{ opacity:0; transform:translateY(8px); }
+.case:hover .content::before{
+  clip-path: polygon(0 0,100% 0,100% 0,0 100%); /* діагональна шторка вгору */
+  opacity:0;
+  -webkit-backdrop-filter:blur(0);
+  backdrop-filter:blur(0);
+  box-shadow:none;
+}
+
+/* Updated actions position */
+.case .actions{
+  position:absolute;
+  left:2rem;
+  bottom:1.6rem;
+  display:inline-flex;
+  gap:.6rem;
+  align-items:center;
+  z-index:3;
+}
+
+/* Updated button styles */
+.case .btn-black{
+  background:transparent;
+  border:1px solid rgba(17,17,17,.8);
+  color:#111;
+  text-transform:uppercase;
+  font-family:'Manrope', sans-serif;
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.08em;
+  padding:.55rem 1.05rem;
+  text-decoration:none;
+  transition:background .25s ease, color .25s ease, border-color .25s ease;
+  box-shadow:none;
+}
+.case:hover .btn-black,
+.case .btn-black:hover{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+
+/* Contacts */
+.contacts-head{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.signature-line.gold{background:var(--black);height:1px;width:64px}
+.contacts-grid .contact-a{display:block;color:#111;text-decoration:none;margin:.2rem 0}
+.contacts-grid .contact-a:hover{text-decoration:underline}
+.imprint{color:#666}
+.copyright{margin-top:2.5rem;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#777;text-align:center;}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.lang-switch .chev{ transition:transform .2s ease; }
+.lang-switch.open .chev{ transform:rotate(180deg); transition:transform .2s ease; }
+
+/* =================  HERO GRID — CLIPPED TO CONTENT  ================= */
+/* Draw the grid on a pseudo-element so it never stretches past hero content */
+.hero.grid-bg{ background:none !important; position:relative; overflow:hidden; }
+.hero.grid-bg::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(to right, rgba(0,0,0,.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0,0,0,.03) 1px, transparent 1px);
+  background-size:96px 100%, 100% 96px;  /* desktop step */
+  background-position:left top;
+}
+@media(max-width:1200px){ .hero.grid-bg::before{ background-size:88px 100%, 100% 88px; } }
+@media(max-width:900px){  .hero.grid-bg::before{ background-size:72px 100%, 100% 72px; } }
+@media(max-width:680px){  .hero.grid-bg::before{ background-size:60px 100%, 100% 60px; } }
+@media(max-width:480px){  .hero.grid-bg::before{ background-size:48px 100%, 100% 48px; } }
+
+
+/* ===== HERO META (below hero) ===== */
+.hero-meta{ border-top:1px solid #e6e6e6; }
+.hero-meta-inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.hero-meta .trust{ margin:0; }
+.hero-meta .scroll-link{ margin:0; }
+@media(max-width:680px){
+  .hero-meta-inner{ flex-direction:column; align-items:flex-start; gap:.8rem; }
+}
+
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;align-self:stretch}
+/* Remove default top margin from the main hero title */
+
+/* === REFINEMENTS: HERO LAYOUT & TYPO === */
+
+/* 1) Щільніше зверху та вирівнюємо baseline героя */
+.hero{ padding-top:72px; }                   /* було 80px */
+.hero .type-title, .hero h1{ margin-top:0.8em; } /* без верхнього відступу */
+
+/* 2) Права колонка тягнеться на висоту героя і контент внизу */
+.hero-right{
+  align-self:stretch;          /* щоб зайняла всю висоту гріда */
+  justify-content:flex-end;    /* текст у самому низу */
+}
+.vr{ height:260px; }           /* трохи довший штрих, щоб дотягнутися до базової лінії */
+
+/* 3) Тонкий baseline під геро */
+.hero + .section{ padding-top:2.2rem; }      /* трохи повітря після лінії */
+
+/* 4) Трішки спокійніші бейджі під геро */
+.hero-meta .trust span{ color:#777; letter-spacing:.2em; }
+
+/* 5) Акуратніший аперкейс і мікротипографіка */
+html{ text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; }
+.eyebrow, .main-nav a, .trust span, .cta-link, .scroll-link{
+  letter-spacing:.18em;        /* трохи менше, легше читається */
+}
+
+/* 6) Сітка героя — ледве помітніша, щоб не «шуміла» під заголовком */
+.hero.grid-bg::before{
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,.025) 1px, transparent 1px);
+}
+
+/* 7) Трохи щільніше body в геро-описі на великих екранах */
+@media (min-width: 1200px){
+  .hero-body{ max-width: 52ch; }
+}
+/* === HERO button styled like case buttons === */
+.hero .btn-gold{
+  height:44px;                        /* стабільна висота */
+  padding:0 18px;                     /* горизонтальний ритм */
+  background:#111;                    /* чорна як акцент */
+  color:#fff;
+  border:2px solid #111;              /* чіткий контур */
+  border-radius:0;                    /* без скруглень */
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:12px;                     /* компактна кнопка як у кейсах */
+  font-weight:700;
+  letter-spacing:.14em;               /* редакційний аперкейс */
+  text-transform:uppercase;
+  box-shadow:none;                    /* без тіней */
+  transition:background .2s ease, color .2s ease, border-color .2s ease;
+  white-space:nowrap;
+  min-width:max-content;
+}
+.hero .btn-gold:hover{
+  background:#fff;
+  color:#111;
+  border-color:#111;
+}
+.hero .btn-gold:active{
+  background:#f2f2f2;
+  color:#111;
+  border-color:#111;
+}
+.hero .btn-gold:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:2px;
+}
+@media (prefers-reduced-motion: reduce){
+  .hero .btn-gold:hover{ transform:none; }
+}
+
+
+/* Hero title first line strong contrast */
+.hero .type-title strong:first-child {
+  font-weight: 700;
+}
+/* ===================== RESPONSIVE POLISH (ALL DEVICES) ===================== */
+/* Header + container spacing */
+@media (max-width:1200px){
+  .header-inner{ padding:1.25rem 2rem; }
+  .main-nav{ gap:1.4rem; }
+  .main-nav a{ font-size:11px; letter-spacing:.16em; }
+  .hero{ padding-top:64px; }
+  .vr{ height:220px; }
+}
+
+@media (max-width:900px){
+  .container{ padding:0 1.25rem; }
+  .header-inner{ padding:1.1rem 1.25rem; }
+  .brand{ font-size:10px; letter-spacing:.2em; }
+  .main-nav{ gap:1rem; }
+  .main-nav a{ margin:0 .6rem; font-size:11px; }
+
+  /* hero layout stacks */
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-right{ align-items:flex-start; }
+  .vr{ display:none; }
+  .caption{ margin-left:0; }
+
+  .section{ padding:5rem 0; }
+  .cases-grid{ grid-template-columns:1fr; }
+}
+
+/* Wider desktops — keep 2 columns for cases */
+@media (min-width:1280px){
+  .cases-grid{ grid-template-columns:repeat(2, 1fr); }
+}
+
+@media (max-width:680px){
+  .container{ padding:0 1rem; }
+  .header-inner{ padding:1rem; }
+  .main-nav{ gap:.8rem; }
+  .main-nav a{ font-size:10px; letter-spacing:.16em; }
+  .hero{ padding-top:56px; }
+
+  /* compact hero buttons and case captions */
+  .btn-gold{ padding:.8rem 1.25rem; font-size:11px; }
+  .case .content{ padding:1.4rem 1.25rem 3.2rem; }
+  .case .actions{ left:1.25rem; bottom:1.2rem; }
+}
+
+@media (max-width:480px){
+  .main-nav{ flex-wrap:wrap; row-gap:.5rem; }
+  .lang-switch{ margin-left:.25rem; }
+  .section{ padding:4rem 0; }
+  /* slightly calmer type on small phones */
+  .type-h2{ font-size:clamp(26px,4.8vw,34px); }
+  .type-h3{ font-size:clamp(18px,3.8vw,24px); }
+  .type-body{ font-size:clamp(15px,3.6vw,18px); }
+}
+/* ========================================================================== */
+
+/* === Mobile-only: hide nav links and hero right labels === */
+@media (max-width:680px){
+  /* Hide About / Cases / Contacts in top nav */
+  .main-nav a{ display:none !important; }
+  /* Hide "Selected works", "2023—2025" and "scroll" on hero */
+  .hero-right .caption{ display:none !important; }
+  .scroll-link{ display:none !important; }
+}
+
+/* Fine-tune: keep CTAs single-line and reduce perceived gap */
+.section-divider .actions > *{ white-space:nowrap; }
+.section-divider{ row-gap:0; }
+
+/* ================== HOTFIX — Divider visuals ================== */
+/* 1) Make the secondary CTA look like a real button whatever the markup */
+.section-divider .actions a:not(.btn-gold),
+.section-divider .actions button:not(.btn-gold),
+.section-divider .actions .cta-link{
+  border:3px solid #111 !important;
+  background:#fff !important;
+  color:#111 !important;
+  height:48px !important;
+  padding:0 22px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-decoration:none !important;
+  text-transform:uppercase !important;
+  font:700 13px/1 'Manrope','Inter',system-ui,sans-serif !important;
+  letter-spacing:.16em !important;
+  border-radius:0 !important;
+  white-space:nowrap !important;
+}
+.section-divider .actions a:not(.btn-gold):hover,
+.section-divider .actions button:not(.btn-gold):hover,
+.section-divider .actions .cta-link:hover{
+  background:#111 !important;
+  color:#fff !important;
+  border-color:#111 !important;
+}
+
+/* 2) Tighter perceived gap between actions row and tags */
+.section-divider{ row-gap:0 !important; }
+.section-divider .actions{ gap:.75rem !important; margin-bottom:-1px !important; }
+.section-divider .tags{
+  padding-top:0 !important;
+  margin-top:.1rem !important; /* almost sits on the baseline */
+  width:100% !important;
+  display:flex !important;
+  justify-content:space-between !important; /* reach the container edges */
+  align-items:center !important;
+  gap:clamp(6px,1.4vw,16px) !important;
+  flex-wrap:nowrap !important;   /* keep single line */
+  line-height:1 !important;
+}
+/* 3) Stretch every tag equally to the edges */
+.section-divider .tags span{
+  flex:1 1 0 !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+}
+
+/* 4) Mobile polish: keep both CTAs one-line and compact */
+@media (max-width:560px){
+  .section-divider .actions{ gap:.35rem !important; flex-wrap:nowrap !important; white-space:nowrap !important; }
+  .section-divider .actions a:not(.btn-gold),
+  .section-divider .actions button:not(.btn-gold),
+  .section-divider .actions .cta-link{
+    border-width:3px !important;
+    height:42px !important;
+    padding:0 16px !important;
+    font-size:12px !important;
+    letter-spacing:.16em !important;
+  }
+  .section-divider .tags{ gap:clamp(4px,1.2vw,10px) !important; }
+}
+/* ================== END HOTFIX ================== */
+
+/* ========= MOBILE CTA HARDENING (CASE-STYLE) ========= */
+/* Make any secondary CTA inside the hero divider look like a real button —
+   even if the markup doesn't use our .cta-link class. */
+.section-divider .actions > a:not(.btn-gold),
+.section-divider .actions > button:not(.btn-gold),
+.section-divider .actions > .cta-link,
+.section-divider .actions > *:not(.btn-gold):not(svg):not(.btn-gold){
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border:3px solid #111 !important;
+  background:#fff !important;
+  color:#111 !important;
+  height:48px !important;
+  padding:0 22px !important;
+  border-radius:0 !important;
+  text-transform:uppercase !important;
+  font:700 13px/1 'Manrope', 'Inter', system-ui, sans-serif !important;
+  letter-spacing:.16em !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+  min-width:max-content !important;
+  box-shadow:none !important;
+}
+.section-divider .actions > a:not(.btn-gold):hover,
+.section-divider .actions > button:not(.btn-gold):hover,
+.section-divider .actions > .cta-link:hover,
+.section-divider .actions > *:not(.btn-gold):not(svg):not(.btn-gold):hover{
+  background:#111 !important;
+  color:#fff !important;
+  border-color:#111 !important;
+}
+
+/* Keep both CTAs on one line and reduce gap a touch on phones */
+@media (max-width: 560px){
+  .section-divider .actions{ gap:.4rem !important; flex-wrap:nowrap !important; }
+  .section-divider .actions > .btn-gold{ height:36px !important; padding:0 12px !important; font-size:10px !important; letter-spacing:.12em !important; }
+  .section-divider .actions > a:not(.btn-gold),
+  .section-divider .actions > button:not(.btn-gold),
+  .section-divider .actions > .cta-link,
+  .section-divider .actions > *:not(.btn-gold):not(svg):not(.btn-gold){
+    border-width:3px !important;
+    height:42px !important;
+    padding:0 16px !important;
+    font-size:12px !important;
+    letter-spacing:.16em !important;
+  }
+}
+
+/* Stretch tags perfectly edge‑to‑edge of the container */
+.section-divider .tags{ width:100% !important; justify-content:space-between !important; gap:clamp(6px,1.4vw,16px) !important; }
+.section-divider .tags span{ flex:1 1 0 !important; text-align:center !important; white-space:nowrap !important; }
+/* ========= END MOBILE CTA HARDENING ========= */
+/* ===== Mobile override: "Замовити сайт" button styled like case buttons ===== */
+@media (max-width: 680px){
+  .section-divider .actions a:not(.btn-gold){
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #111;
+    background:#fff;
+    color:#111;
+    height:42px;
+    padding:0 14px;
+    font:600 11px/1 'Manrope','Inter',system-ui,sans-serif;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    border-radius:0;
+    white-space:nowrap;
+    text-decoration:none;
+    box-shadow:none;
+  }
+  .section-divider .actions a:not(.btn-gold):hover{
+    background:#111;
+    color:#fff;
+    border-color:#111;
+  }
+}
+/* === FINAL mobile parity: make "Замовити сайт" identical to .case .btn-black === */
+@media (max-width:680px){
+  .section-divider .actions a:not(.btn-gold){
+    background:transparent !important;
+    border:1px solid rgba(17,17,17,.8) !important;
+    color:#111 !important;
+    text-transform:uppercase !important;
+    font-family:'Manrope', sans-serif !important;
+    font-weight:600 !important;
+    font-size:12px !important;
+    letter-spacing:.08em !important;
+    padding:.55rem 1.05rem !important; /* match .case .btn-black */
+    height:auto !important;
+    line-height:1 !important;
+    box-shadow:none !important;
+  }
+  .section-divider .actions a:not(.btn-gold):hover{
+    background:#111 !important;
+    color:#fff !important;
+    border-color:#111 !important;
+  }
+}
+/* === MOBILE CTA FIX: "Замовити сайт" (cta-link reveal visible in hero-ctas) === */
+@media (max-width:680px){
+  .hero-ctas .cta-link.reveal.visible,
+  .hero-ctas .cta-link,
+  .cta-link.reveal.visible{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    background:transparent !important;
+    border:1px solid rgba(17,17,17,.8) !important;
+    color:#111 !important;
+    text-transform:uppercase !important;
+    font-family:'Manrope', sans-serif !important;
+    font-weight:600 !important;
+    font-size:12px !important;
+    letter-spacing:.08em !important;
+    padding:.55rem 1.05rem !important;
+    height:auto !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    text-decoration:none !important;
+    box-shadow:none !important;
+    border-radius:0 !important;
+    min-width:max-content !important;
+  }
+  .hero-ctas .cta-link.reveal.visible:hover,
+  .hero-ctas .cta-link:hover,
+  .cta-link.reveal.visible:hover{
+    background:#111 !important;
+    color:#fff !important;
+    border-color:#111 !important;
+  }
+}
+/* === Mobile: hide decorative arrows (no hover on touch) === */
+@media (max-width:680px){
+  .arrow-thin,
+  .hero-ctas .arrow-thin,
+  .section-divider .actions .arrow-thin,
+  .cta-link svg,
+  .btn-gold svg{
+    display:none !important;
+  }
+}
+
+
+/* === EXACT CTA PARITY (height + width) on desktop/tablet === */
+:root{
+  --cta-h: 48px;
+  --cta-x: 22px;
+  --cta-bw: 3px;
+}
+
+/* Use a 2-column grid so both buttons take equal width */
+@media (min-width: 561px){
+  .section-divider .actions{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    align-items:stretch !important;
+    gap:.75rem !important;
+  }
+  .section-divider .actions > *{
+    height:var(--cta-h) !important;
+    padding:0 var(--cta-x) !important;
+    border-width:var(--cta-bw) !important;
+    width:100% !important;          /* stretch to the grid cell */
+    min-width:0 !important;          /* override previous max-content */
+    white-space:nowrap !important;   /* keep one line */
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    box-sizing:border-box !important;
+  }
+  /* keep fill/outline look */
+  .section-divider .actions > .btn-gold{
+    background:#111 !important;
+    color:#fff !important;
+    border:var(--cta-bw) solid #111 !important;
+  }
+  .section-divider .actions > a:not(.btn-gold),
+  .section-divider .actions > button:not(.btn-gold),
+  .section-divider .actions > .cta-link{
+    background:#fff !important;
+    color:#111 !important;
+    border:var(--cta-bw) solid #111 !important;
+  }
+}
+
+/* On phones: keep compact auto width, but equal height/metrics */
+@media (max-width: 560px){
+  .section-divider .actions{
+    display:flex !important;
+    gap:.4rem !important;
+  }
+  .section-divider .actions > *{
+    height:42px !important;
+    padding:0 16px !important;
+    border-width:3px !important;
+    min-width:max-content !important; /* preserve one-line look */
+    width:auto !important;
+  }
+}
+/* --- HARD EQUALIZER: both CTAs in the divider are identical boxes --- */
+.section-divider .actions{
+  /* two equal columns on desktop/tablet */
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  align-items:stretch !important;
+  gap:.75rem !important;
+}
+.section-divider .actions > *{
+  box-sizing:border-box !important;
+  width:100% !important;            /* stretch to the grid cell */
+  min-width:0 !important;            /* cancel previous max-content */
+  height:48px !important;            /* uniform height */
+  padding:0 22px !important;         /* uniform inner spacing */
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  white-space:nowrap !important;     /* single line always */
+}
+/* keep fill/outline look but with exactly the same metrics */
+.section-divider .actions > .btn-gold{
+  background:#111 !important; color:#fff !important; border:3px solid #111 !important; border-radius:0 !important;
+}
+.section-divider .actions > a:not(.btn-gold),
+.section-divider .actions > button:not(.btn-gold),
+.section-divider .actions > .cta-link{
+  background:#fff !important; color:#111 !important; border:3px solid #111 !important; border-radius:0 !important;
+}
+
+/* phones: equal height/metrics, auto width */
+@media (max-width:560px){
+  .section-divider .actions{ display:flex !important; gap:.4rem !important; }
+  .section-divider .actions > *{ height:42px !important; padding:0 16px !important; width:auto !important; min-width:max-content !important; }
+}
+/* === HERO CTAs: identical metrics on all devices (btn-gold & cta-link) === */
+.hero-ctas{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:.75rem !important;
+  width:100% !important;
+}
+.hero-ctas .btn-gold,
+.hero-ctas .cta-link{
+  width:100% !important;
+  height:48px !important;
+  padding:0 22px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  box-sizing:border-box !important;
+}
+.hero-ctas .btn-gold{
+  background:#111 !important;
+  color:#fff !important;
+  border:3px solid #111 !important;
+}
+.hero-ctas .cta-link{
+  background:#fff !important;
+  color:#111 !important;
+  border:3px solid #111 !important;
+}
+
+/* === FINAL HERO CTA HEIGHT EQUALIZER (exact same box) === */
+.hero-ctas .btn-gold,
+.hero-ctas .cta-link{
+  box-sizing: border-box !important;      /* include border in total height */
+  height: 48px !important;                /* identical height */
+  line-height: 48px !important;           /* safety if flex is overridden */
+  padding: 0 22px !important;             /* identical inner spacing */
+  border-width: 3px !important;           /* same stroke */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font: 700 13px/48px 'Manrope','Inter',system-ui,sans-serif !important; /* same metrics */
+  letter-spacing: .16em !important;
+}
+
+/* Mobile — make the text CTA in hero look like a real outlined button */
+@media (max-width:680px){
+  .hero-ctas .cta-link,
+  .hero-ctas .cta-link.reveal.visible{
+    display:inline-flex !important; align-items:center !important; justify-content:center !important;
+    background:#fff !important; color:#111 !important; border:3px solid #111 !important; border-radius:0 !important;
+    height:42px !important; padding:0 16px !important; font:700 12px/1 'Manrope','Inter',system-ui,sans-serif !important; letter-spacing:.14em !important;
+    text-transform:uppercase !important; white-space:nowrap !important; text-decoration:none !important; box-shadow:none !important;
+  }
+  /* Cancel desktop 48px line-height/font for cta-link in hero-ctas */
+  .hero-ctas .cta-link,
+  .hero-ctas .cta-link.reveal.visible{
+      line-height:1 !important;
+  }
+  /* Mobile override: make gold button match mobile size and cancel 48px font/line-height */
+  .hero-ctas .btn-gold{
+    height:42px !important;
+    padding:0 16px !important;
+    /* cancel desktop 48px line-height/font shorthand */
+    font-size:12px !important;
+    line-height:1 !important;
+    letter-spacing:.14em !important;
+  }
+}
+/* =================== FINAL CTA SIZE EQUALIZER (divider) =================== */
+/* Make BOTH buttons inside the divider visually identical (height & width) */
+.section-divider .actions{ 
+  display:grid !important; 
+  grid-template-columns:1fr 1fr !important; 
+  align-items:stretch !important; 
+  gap:.75rem !important; 
+}
+.section-divider .actions > a.btn-gold,
+.section-divider .actions > a.cta-link,
+.section-divider .actions > a:not(.btn-gold){
+  box-sizing:border-box !important;          /* include border in total height */
+  height:48px !important;                    /* same outer height */
+  line-height:48px !important;               /* same inner line */
+  padding:0 22px !important;                 /* same inner spacing */
+  border-width:3px !important;               /* same stroke */
+  width:100% !important;                     /* stretch equally by grid */
+  min-width:0 !important;                    /* cancel max-content */
+  display:inline-flex !important;            /* proper centering */
+  align-items:center !important; 
+  justify-content:center !important; 
+  font:700 13px/48px 'Manrope','Inter',system-ui,sans-serif !important;
+  letter-spacing:.16em !important; 
+  text-transform:uppercase !important; 
+  white-space:nowrap !important; 
+  text-decoration:none !important;
+}
+/* keep fill/outline look but identical metrics */
+.section-divider .actions > a.btn-gold{ 
+  background:#111 !important; 
+  color:#fff !important; 
+  border:3px solid #111 !important; 
+  border-radius:0 !important; 
+}
+.section-divider .actions > a:not(.btn-gold){ 
+  background:#fff !important; 
+  color:#111 !important; 
+  border:3px solid #111 !important; 
+  border-radius:0 !important; 
+}
+/* Phones: compact but still equal */
+@media (max-width:560px){
+  .section-divider .actions{ display:flex !important; gap:.4rem !important; }
+  .section-divider .actions > a.btn-gold,
+  .section-divider .actions > a.cta-link,
+  .section-divider .actions > a:not(.btn-gold){
+    height:42px !important; 
+    line-height:42px !important; 
+    padding:0 16px !important; 
+    width:auto !important; 
+  }
+}
+/* ======================================================================== */
+
+/* === Divider super-tight gap tweak — CLEAN === */
+/* Reduce space between CTAs and tags, and keep perfect stretch to container */
+.section-divider{ row-gap:0 !important; }
+.section-divider .actions{ margin-bottom:-4px !important; } /* sit exactly on the baseline */
+
+.section-divider .tags{
+  padding-top:0 !important;
+  margin-top:-4px !important;            /* pull tags right under the border */
+  width:100% !important;
+  display:flex !important;
+  justify-content:space-between !important; /* first/last align to container gutters */
+  align-items:center !important;
+  gap:clamp(6px,1.4vw,16px) !important;
+  padding-inline:inherit !important;       /* keep container side paddings */
+  line-height:1 !important;
+}
+
+.section-divider .tags span{
+  flex:1 1 0 !important;                  /* equal columns to fill the row */
+  text-align:center !important;
+  white-space:nowrap !important;
+  padding-block:0 !important;
+}
+/* ================= MOBILE TIGHTEN — CONTACTS / FOOTER ================= */
+@media (max-width:680px){
+  /* more compact section padding for the contacts block only */
+  #contacts.section{ padding:1.25rem 0 .75rem !important; }
+
+  /* reduce the space before the contacts list */
+  #contacts .contacts-head{ margin-bottom:.5rem !important; }
+
+  /* tighter list rhythm */
+  #contacts .contacts-grid{ row-gap:.12rem !important; }
+  #contacts .contacts-grid .contact-a{ margin:.04rem 0 !important; line-height:1.42 !important; }
+
+  /* bring helper lines closer to the list */
+  #contacts .imprint{ margin-top:.1rem !important; gap:0 !important; }
+  /* also tighten the inner items inside imprint */
+  #contacts .imprint > *{ margin-top:.12rem !important; line-height:1.4 !important; }
+
+  /* smaller gap before copyright line */
+  .copyright{ margin-top:.6rem !important; }
+  /* prevent accidental extra gaps under the two helper lines */
+  #contacts .imprint > *:first-child{ margin-top:0 !important; }
+}
+/* ================= END MOBILE TIGHTEN — CONTACTS / FOOTER ============ */
+/* Desktop: outlined CTA — calmer stroke and no bottom edge */
+@media (min-width: 900px){
+  .section-divider .actions > a:not(.btn-gold),
+  .section-divider .actions > .cta-link,
+  .hero-ctas .cta-link{
+    border-bottom: 0 !important;         /* sit cleanly on baseline */
+    border-width: 2px !important;         /* thinner side stroke */
+    border-color: rgba(17,17,17,.92) !important;
+  }
+}
+
+@media (max-width:680px){
+  #contacts .footer-cta.cta--mobile-in-left{
+    display:inline-flex;
+    margin-top:.6rem !important;   /* невеликий відступ під email */
+    margin-bottom:.8rem !important;   /* new spacing after button */
+    align-self:flex-start;
+  }
+}
+/* === MOBILE: disable hover/active effects for "Замовити сайт" (outlined) === */
+@media (max-width:680px){
+  /* the outlined CTA in hero and divider ("Замовити сайт") */
+  .hero-ctas .cta-link,
+  .section-divider .actions a:not(.btn-gold){
+    transition:none !important;           /* no animated hover */
+  }
+  .hero-ctas .cta-link:hover,
+  .hero-ctas .cta-link:active,
+  .section-divider .actions a:not(.btn-gold):hover,
+  .section-divider .actions a:not(.btn-gold):active{
+    /* keep the base state on touch – no invert, no opacity change */
+    background: inherit !important;
+    color: inherit !important;
+    border-color: inherit !important;
+    box-shadow: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* === TOUCH DEVICES: disable hover/active effects for outlined CTAs === */
+@media (hover:none){
+  .hero-ctas .cta-link,
+  .section-divider .actions a:not(.btn-gold){
+    transition:none !important;
+  }
+  .hero-ctas .cta-link:hover,
+  .hero-ctas .cta-link:active,
+  .section-divider .actions a:not(.btn-gold):hover,
+  .section-divider .actions a:not(.btn-gold):active{
+    background: inherit !important;
+    color: inherit !important;
+    border-color: inherit !important;
+    box-shadow: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ======================= MODAL (POPUP FORM) — MINIMAL ======================= */
+.modal{ position:fixed; inset:0; z-index:1000; display:none; }
+.modal.is-open{ display:block; }
+.modal__overlay{ position:absolute; inset:0; background:rgba(0,0,0,.28); backdrop-filter:blur(1.5px); }
+.modal__dialog{
+  position:relative; z-index:1;
+  /* width clamps for desktop, safe for mobile */
+  width:min(92vw, 640px);
+  max-width:100vw;                /* never overflow horizontally */
+  margin:6vh auto;                /* vertical breathing room */
+  background:#fff;
+  border:1px solid #e6e6e6;       /* thinner, calmer frame */
+  box-shadow:0 18px 60px rgba(0,0,0,.08);
+  padding:1.25rem 1.4rem;
+  border-radius:0;
+  /* make the dialog manage its own overflow */
+  max-height:calc(100dvh - 12vh); /* fits within viewport */
+  overflow:auto;                  /* scroll inner when needed */
+  box-sizing:border-box;
+}
+.modal__close{ position:absolute; right:.5rem; top:.35rem; background:none; border:0; font-size:22px; line-height:1; cursor:pointer; color:#111; padding:.2rem; opacity:.7; }
+.modal__close:hover{ opacity:.9; }
+
+.modal__title{
+  font:600 24px/1.2 'Space Grotesk', system-ui, Arial, sans-serif;  /* calmer title */
+  letter-spacing:-.01em;
+  margin:0 0 .75rem;
+}
+
+.modal__form{ display:grid; gap:.8rem; }
+.modal__field{ display:grid; gap:.3rem; }
+.modal__field span{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#777; }
+.modal__field input,
+.modal__field textarea{
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+  padding:.9rem 1rem;                 /* even vertical rhythm */
+  border:1px solid #d2d2d2;            /* calm neutral line */
+  border-radius:0;                      /* editorial flat */
+  background:#fff;                      /* no grey fill */
+  font-family:'Space Grotesk',system-ui,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.35;
+  color:#111;
+  caret-color:#111;
+  -webkit-appearance:none;              /* iOS quirks */
+  appearance:none;
+  outline:none;
+  box-shadow:none;
+  transition:border-color .15s ease, background-color .15s ease;
+}
+
+.modal__field input:hover,
+.modal__field textarea:hover{ border-color:#c6c6c6; }
+
+.modal__field input:focus,
+.modal__field textarea:focus{
+  border-color:#111;                    /* precise focus */
+  background:#fff;
+  box-shadow:none;
+}
+
+.modal__field ::placeholder{ color:#9a9a9a; opacity:1; }
+
+.modal__field textarea{ min-height:140px; resize:vertical; }
+
+.modal__actions{ display:flex; gap:.6rem; align-items:center; margin-top:.2rem; }
+.modal__note{ margin:.35rem 0 0; font-size:12px; color:#777; }
+
+/* Buttons — echo site CTAs, but lighter */
+.modal__actions button[type="submit"]{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:44px; padding:0 18px; box-sizing:border-box;
+  background:#111; color:#fff; border:1px solid #111; border-radius:0;
+  text-transform:uppercase; text-decoration:none;
+  font:600 12px/1 'Manrope','Inter',system-ui,sans-serif; letter-spacing:.14em;
+}
+.modal__actions button[type="submit"]:hover{ background:#fff; color:#111; }
+
+.modal__actions button:not([type="submit"]) {
+  display:inline-flex; align-items:center; justify-content:center;
+  height:44px; padding:0 18px; box-sizing:border-box;
+  background:#fff; color:#111; border:1px solid #d0d0d0; border-radius:0;
+  text-transform:uppercase; text-decoration:none;
+  font:600 12px/1 'Manrope','Inter',system-ui,sans-serif; letter-spacing:.14em;
+}
+.modal__actions button:not([type="submit"]):hover { border-color:#111; }
+
+@media (max-width:680px){
+  .modal__dialog{ width:clamp(320px, 94vw, 560px); padding:1rem; box-sizing:border-box; max-width:100vw; max-height:calc(100dvh - 10vh); overflow:auto; }
+  .modal__title{ font-size:20px; }
+  .modal__actions button[type="submit"],
+  .modal__actions button:not([type="submit"]) { height:40px; padding:0 14px; font:600 11px/1 'Manrope','Inter',system-ui,sans-serif; }
+  .modal__field input,
+  .modal__field textarea{ padding:.85rem .95rem; border-width:1px; font-size:16px; }
+}
+@media (max-width:420px){
+  .modal__dialog{
+    width:96vw;                     /* almost full width */
+    margin:4vh auto;                /* smaller top/bottom margins */
+    padding:0.9rem;                 /* tighter padding */
+    max-height:calc(100dvh - 8vh);  /* more room for content */
+  }
+  .modal__title{ font-size:18px; }
+  .modal__actions{ display:grid; grid-template-columns:1fr 1fr; gap:.5rem; }
+  .modal__actions button[type="submit"],
+  .modal__actions button:not([type="submit"]){ height:40px; padding:0 .9rem; font:600 11px/1 'Manrope','Inter',system-ui,sans-serif; }
+  .modal__field input,
+  .modal__field textarea{ font-size:16px; }
+}
+/* lock scroll when modal is open */
+html.has-modal, body.has-modal{ overflow:hidden; }
+/* ================================================================= */
