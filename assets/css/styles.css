@@ -115,7 +115,17 @@ html,body{margin:0;padding:0;background:#fff;color:#000;font-family:'Space Grote
 /* Mobile boost: make the hero title slightly larger only on small screens */
 @media (max-width:680px){
   .hero .type-title{
-    font-size: clamp(32px, 8.2vw, 44px); /* bigger but still two lines */
+        font-size: clamp(24px, 6.2vw, 34px); /* smaller on phones */
+    max-width: 24ch;                      /* keep ~2 lines */
+    letter-spacing: 0;                    /* denser tracking for Bicubik */
+    line-height: 1;                       /* tight, same style */
+  }
+}
+
+@media (max-width:420px){
+  .hero .type-title{
+    font-size: clamp(22px, 6vw, 30px);
+    max-width: 22ch;
   }
 }
 
