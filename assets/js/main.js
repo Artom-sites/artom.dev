@@ -168,32 +168,42 @@
   });
 })();
 
-// 3) LANG DROPDOWN — robust & a11y-safe
-(function(){
-  const wrap = document.querySelector('.lang-switch');
-  if (!wrap) return;
-  const btn  = wrap.querySelector('#lang-btn');
-  const list = wrap.querySelector('ul');
+// 3) LANG DROPDOWN (robust open/close + a11y)
+(function () {
+  const lang = document.querySelector('.lang-switch');
+  if (!lang) return;
+
+  const btn  = lang.querySelector('button');
+  const list = lang.querySelector('ul');
   if (!btn || !list) return;
 
-  // guarantee button semantics
-  if (!btn.hasAttribute('type')) btn.setAttribute('type', 'button');
-  btn.setAttribute('aria-haspopup', 'listbox');
-  btn.setAttribute('aria-expanded', 'false');
+  const open  = () => { lang.classList.add('open');  btn.setAttribute('aria-expanded','true');  };
+  const close = () => { lang.classList.remove('open'); btn.setAttribute('aria-expanded','false'); };
 
-  const open = () => { wrap.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); };
-  const close = () => { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); };
+  // toggle
+  btn.type = 'button';
+  const onBtnActivate = (e) => {
+    if(e){ e.preventDefault(); }
+    if (lang.classList.contains('open')) { close(); } else { open(); }
+  };
+  btn.addEventListener('click', onBtnActivate);
+  btn.addEventListener('pointerdown', (e) => { /* mobile reliability */ onBtnActivate(e); });
 
-  btn.addEventListener('click', (e) => {
-    e.preventDefault(); e.stopPropagation();
-    wrap.classList.contains('open') ? close() : open();
+  // close on outside click
+  document.addEventListener('click', (e) => {
+    if (!lang.contains(e.target)) close();
   });
 
-  // close on outside click / ESC
-  document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
-  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-})();
+  // close on Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
 
+  // close after choosing a language
+  list.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => close());
+  });
+})();
 /* ======================= END MAIN JS ======================= */
 
 // 4) Responsive relocate of footer CTA (place after email on phones)
