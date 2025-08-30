@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARTOM / WEBFLOW — Premium Editorial</title>
+    <meta name="description" content="Premium Webflow websites: clean grids, refined typography, controlled animation."/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="uk" href="./index.html" />
+    <link rel="alternate" hreflang="en" href="./en.html" />
+    <link rel="alternate" hreflang="de" href="./de.html" />
+    <link rel="alternate" hreflang="x-default" href="./en.html" />
+    <link rel="canonical" href="./en.html"/>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand font-title">artom.dev</div>
+        <nav class="main-nav">
+          <a href="#about">About</a>
+          <a href="#cases">Cases</a>
+          <a href="#contacts">Contacts</a>
+        </nav>
+        <div class="lang-switch">
+          <button id="lang-btn" aria-label="Change language" aria-expanded="false">
+            <span class="lang-current">EN</span>
+            <svg class="chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <ul>
+            <li><a href="index.html">UK</a></li>
+            <li><a href="en.html">EN</a></li>
+            <li><a href="de.html">DE</a></li>
+          </ul>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('lang-btn');
+            const wrapper = btn?.parentElement;
+            if(!btn || !wrapper) return;
+            btn.addEventListener('click', () => {
+              const isOpen = wrapper.classList.toggle('open');
+              btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            document.addEventListener('click', (e) => {
+              if (!wrapper.contains(e.target)) {
+                wrapper.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+              }
+            });
+          });
+        </script>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="hero" class="hero grid-bg">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <div class="eyebrow">webflow architect</div>
+            <h1 class="font-title type-title reveal" style="font-family:'Space Grotesk', sans-serif;">
+              The digital image of your brand
+            </h1>
+            <div class="signature-line"></div>
+            <p class="type-body hero-body reveal">
+              I design websites that elevate your status and attract clients. Minimalism, structure, refined typography.
+            </p>
+            <div class="hero-ctas">
+              <a class="btn btn-gold reveal" href="#cases">My works</a>
+              <a class="cta-link reveal" href="#contacts">
+                <span>Order a website</span>
+                <svg class="arrow-thin" viewBox="0 0 48 20" aria-hidden="true">
+                  <path d="M2 10 H42"/><path d="M42 10 L36 4 M42 10 L36 16"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="vr"></div>
+            <div class="caption">Selected works<br/>2023—2025</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero-meta">
+        <div class="container hero-meta-inner">
+          <div class="trust">
+            <span>webflow</span><span>ui/ux</span><span>cms</span><span>animations</span><span>seo</span>
+          </div>
+          <a class="scroll-link" href="#about">
+            <span>scroll</span>
+            <svg class="arrow-thin rotate" viewBox="0 0 48 20" aria-hidden="true">
+              <path d="M2 10 H42"/><path d="M42 10 L36 4 M42 10 L36 16"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <div class="container grid-2">
+          <div>
+            <h2 class="font-title type-h2">I build websites on Webflow</h2>
+            <p class="type-body">
+              I help brands look stronger online. <br>Fast, stylish, and result‑oriented websites.
+            </p>
+          </div>
+          <div>
+            <ul class="type-body bullets">
+              <li>UX / IA — architecture, flows, prototypes</li>
+              <li>Editorial UI — type, grids, composition</li>
+              <li>Webflow — components, CMS, integrations</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASES -->
+      <section id="cases" class="section">
+        <div class="container">
+          <div class="eyebrow font-title">cases</div>
+          <div class="cases-grid">
+            <!-- Case 1 -->
+            <article class="case">
+              <div class="bg"><img src="img/targetolog.png" alt="Targetologist Landing background"/></div>
+              <div class="content">
+                <div>
+                  <h3 class="font-title type-h3">Targetologist Landing</h3>
+                  <p class="type-body" style="margin-top:.5rem;color:#555">Landing page for an advertising specialist</p>
+                </div>
+                <div class="actions">
+                  <a class="btn-black" href="https://artom-targetolog-site.webflow.io/" target="_blank" rel="noopener">Open site</a>
+                  <svg class="arrow-thin" viewBox="0 0 48 20" aria-hidden="true"><path d="M2 10 H42"/><path d="M42 10 L36 4 M42 10 L36 16"/></svg>
+                </div>
+              </div>
+            </article>
+            <!-- Case 2 -->
+            <article class="case">
+              <div class="bg"><img src="img/avto-servis.png" alt="Auto Engine Service background"/></div>
+              <div class="content">
+                <div>
+                  <h3 class="font-title type-h3">Auto Engine Service</h3>
+                  <p class="type-body" style="margin-top:.5rem;color:#555">Service website with simple CTAs and a work gallery</p>
+                </div>
+                <div class="actions">
+                  <a class="btn-black" href="https://avto-engine-servise.webflow.io/" target="_blank" rel="noopener">Open site</a>
+                  <svg class="arrow-thin" viewBox="0 0 48 20" aria-hidden="true"><path d="M2 10 H42"/><path d="M42 10 L36 4 M42 10 L36 16"/></svg>
+                </div>
+              </div>
+            </article>
+            <!-- Case 3 -->
+            <article class="case">
+              <div class="bg"><img src="img/va-pro-services.png" alt="VA Pro Services background"/></div>
+              <div class="content">
+                <div>
+                  <h3 class="font-title type-h3">VA Pro Services</h3>
+                  <p class="type-body" style="margin-top:.5rem;color:#555">Corporate website with CMS for business services</p>
+                </div>
+                <div class="actions">
+                  <a class="btn-black" href="https://www.va-proservices.com/" target="_blank" rel="noopener">Open site</a>
+                  <svg class="arrow-thin" viewBox="0 0 48 20" aria-hidden="true"><path d="M2 10 H42"/><path d="M42 10 L36 4 M42 10 L36 16"/></svg>
+                </div>
+              </div>
+            </article>
+            <!-- Case 4 -->
+            <article class="case">
+              <div class="bg"><img src="img/wedding.png" alt="Vhorizon Studio background"/></div>
+              <div class="content">
+                <div>
+                  <h3 class="font-title type-h3">Vhorizon Studio</h3>
+                  <p class="type-body" style="margin-top:.5rem;color:#555">Website for comprehensive wedding services</p>
+                </div>
+                <div class="actions">
+                  <a class="btn-black" href="http://vhorizonstudio.com" target="_blank" rel="noopener">Open site</a>
+                  <svg class="arrow-thin" viewBox="0 0 48 20" aria-hidden="true"><path d="M2 10 H42"/><path d="M42 10 L36 4 M42 10 L36 16"/></svg>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTS -->
+      <section id="contacts" class="section">
+        <div class="container">
+          <div class="contacts-head">
+            <div class="signature-line gold"></div>
+            <h2 class="font-title type-h2">Get in touch</h2>
+          </div>
+          <div class="grid-2 type-body contacts-grid">
+            <div class="contacts-links">
+              <a href="https://t.me/artom_dev" target="_blank" class="contact-a">Telegram</a>
+              <a href="https://instagram.com/artom.dev" target="_blank" class="contact-a">Instagram</a>
+              <a href="https://artom.dev" target="_blank" class="contact-a">artom.dev</a>
+              <a href="mailto:artom.dev@sites.com" class="contact-a">artom.dev@sites.com</a>
+            </div>
+            <div class="imprint">
+              <div>Webflow websites</div>
+              <div>Created by artom.dev</div>
+              <div class="footer-cta">
+                <button class="btn-black open-contact">Order a website</button>
+              </div>
+            </div>
+          </div>
+          <div class="copyright">
+            © 2025 ARTOM — Premium Editorial
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Reveal on scroll
+      const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:0.2});
+      document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.reveal').forEach(el=>io.observe(el));});
+    </script>
+
+    <!-- Contact Modal (popup) -->
+    <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="false">
+      <div class="modal__overlay" data-close-modal></div>
+      <div class="modal__dialog" role="document">
+        <button class="modal__close" type="button" aria-label="Close" data-close-modal>×</button>
+        <h3 class="type-h3 modal__title">Order a website</h3>
+        <form id="contact-form" class="modal__form" action="#" method="post" novalidate>
+          <label class="modal__field">
+            <span>Your name</span>
+            <input type="text" name="name" required placeholder="Name" />
+          </label>
+          <label class="modal__field">
+            <span>Telegram</span>
+            <input type="text" name="telegram" required placeholder="@username" />
+          </label>
+          <label class="modal__field">
+            <span>Message</span>
+            <textarea name="message" rows="4" required placeholder="Briefly describe the task"></textarea>
+          </label>
+          <div class="modal__actions">
+            <button type="submit" class="btn-gold">Send</button>
+            <button type="button" class="cta-link" data-close-modal>Cancel</button>
+          </div>
+          <p class="modal__note">Fill out the form — I will reply within a day.</p>
+        </form>
+      </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
