@@ -1520,3 +1520,31 @@ html{ text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; }
 /* lock scroll when modal is open */
 html.has-modal, body.has-modal{ overflow:hidden; }
 /* ================================================================= */
+
+/* LANG SWITCH */
+.lang-switch { position: relative; }
+.lang-switch button {
+  display: flex; align-items: center; gap: .4rem;
+  background: transparent; border: 0; padding: .25rem .5rem; cursor: pointer;
+}
+.lang-switch .chev { transition: transform .2s ease; }
+.lang-switch.open .chev { transform: rotate(180deg); }
+
+.lang-switch ul {
+  position: absolute; right: 0; top: calc(100% + 8px);
+  display: none;
+  background: #fff; border: 1px solid #e6e6e6;
+  padding: .35rem 0; margin: 0; list-style: none;
+  min-width: 120px;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+.lang-switch.open ul { display: block; }
+.lang-switch li a {
+  display: block; padding: .5rem .75rem; text-decoration: none; color: #111;
+}
+.lang-switch li a:hover { background: #f5f5f5; }
+
+/* щоб не обрізало дропдаун у хедері */
+.site-header { position: relative; z-index: 50; }
+.header-inner { overflow: visible; }
