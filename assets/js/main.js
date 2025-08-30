@@ -168,26 +168,40 @@
   });
 })();
 
-// 3) LANG DROPDOWN (optional: collapse on outside click if present)
+// 3) LANG DROPDOWN — robust & a11y-safe
 (function(){
-  const lang = document.querySelector('.lang-switch');
-  if(!lang) return;
-  const btn = lang.querySelector('button');
-  const list = lang.querySelector('ul');
-  if(!btn || !list) return;
+  const wrap = document.querySelector('.lang-switch');
+  if (!wrap) return;
+  const btn  = wrap.querySelector('button');
+  const list = wrap.querySelector('ul');
+  if (!btn || !list) return;
 
-  const toggle = () => {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    lang.classList.toggle('open', !expanded);
+  // guarantee button semantics
+  if (!btn.hasAttribute('type')) btn.setAttribute('type', 'button');
+  btn.setAttribute('aria-haspopup', 'listbox');
+  btn.setAttribute('aria-expanded', 'false');
+
+  const open = () => {
+    wrap.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  };
+  const close = () => {
+    wrap.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
   };
 
-  btn.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    wrap.classList.contains('open') ? close() : open();
+  });
+
+  // close on outside click / ESC
   document.addEventListener('click', (e) => {
-    if(!lang.contains(e.target)){
-      btn.setAttribute('aria-expanded','false');
-      lang.classList.remove('open');
-    }
+    if (!wrap.contains(e.target)) close();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
   });
 })();
 
