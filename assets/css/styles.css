@@ -118,7 +118,7 @@ html,body{margin:0;padding:0;background:#fff;color:#000;font-family:'Space Grote
     font-size: clamp(30px, 7vw, 32px); /* adjusted for OnePlus 9R and small screens */
     max-width: 24ch;                      /* keep ~2 lines */
     letter-spacing: 0;                    /* denser tracking for Bicubik */
-    line-height: 1.4;                       /* tight, same style */
+    line-height: 1.2;                       /* tight, same style */
   }
 }
 
