@@ -26,19 +26,19 @@
           <a href="#cases">Cases</a>
           <a href="#contacts">Contacts</a>
         </nav>
-        <div class="lang-switch">
-          <button id="lang-btn" aria-label="Змінити мову" aria-expanded="false">
-            <span class="lang-current">UK</span>
-            <svg class="chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          <ul>
-            <li><a href="index.html">UK</a></li>
-            <li><a href="en.html">EN</a></li>
-            <li><a href="de.html">DE</a></li>
-          </ul>
-        </div>
+      <div class="lang-switch">
+  <button id="lang-btn" type="button" aria-label="Змінити мову" aria-haspopup="listbox" aria-expanded="false">
+    <span class="lang-current">UK</span>
+    <svg class="chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <ul role="listbox">
+    <li><a href="index.html">UK</a></li>
+    <li><a href="en.html">EN</a></li>
+    <li><a href="de.html">DE</a></li>
+  </ul>
+</div>
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const btn = document.getElementById('lang-btn');
