@@ -172,37 +172,23 @@
 (function(){
   const wrap = document.querySelector('.lang-switch');
   if (!wrap) return;
-  const btn  = wrap.querySelector('button');
+  const btn  = wrap.querySelector('#lang-btn');
   const list = wrap.querySelector('ul');
   if (!btn || !list) return;
 
-  // guarantee button semantics
-  if (!btn.hasAttribute('type')) btn.setAttribute('type', 'button');
-  btn.setAttribute('aria-haspopup', 'listbox');
-  btn.setAttribute('aria-expanded', 'false');
+  if (!btn.hasAttribute('type')) btn.setAttribute('type','button');
+  btn.setAttribute('aria-haspopup','listbox');
+  btn.setAttribute('aria-expanded','false');
 
-  const open = () => {
-    wrap.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-  };
-  const close = () => {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-  };
+  const open = () => { wrap.classList.add('open'); btn.setAttribute('aria-expanded','true'); };
+  const close = () => { wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); };
 
   btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    e.preventDefault(); e.stopPropagation();
     wrap.classList.contains('open') ? close() : open();
   });
-
-  // close on outside click / ESC
-  document.addEventListener('click', (e) => {
-    if (!wrap.contains(e.target)) close();
-  });
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') close();
-  });
+  document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 })();
 
 /* ======================= END MAIN JS ======================= */
