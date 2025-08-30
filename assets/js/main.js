@@ -1,6 +1,6 @@
 /* ========================= MAIN JS ========================= */
 
-// 1) CONTACT MODAL (popup form)
+// 1) CONTACT MODAL (popup form) + Telegram submit + localized redirect
 (function(){
   const modal = document.getElementById('contact-modal');
   if(!modal) return; // safety if markup is missing
@@ -28,7 +28,7 @@
     modal.setAttribute('aria-modal','false');
   };
 
-  // --- Telegram config (fill these before deploy) ---
+  // --- Telegram config (fill these before deploy if empty) ---
   const TG_TOKEN   = '6793718495:AAHTN5TuxmYEjXOT9XlyWFQtaxfrRIxBhMM';
   const TG_CHAT_ID = '-1002014034919';
 
@@ -176,30 +176,33 @@
   const list = wrap.querySelector('ul');
   if (!btn || !list) return;
 
-  if (!btn.hasAttribute('type')) btn.setAttribute('type','button');
-  btn.setAttribute('aria-haspopup','listbox');
-  btn.setAttribute('aria-expanded','false');
+  // guarantee button semantics
+  if (!btn.hasAttribute('type')) btn.setAttribute('type', 'button');
+  btn.setAttribute('aria-haspopup', 'listbox');
+  btn.setAttribute('aria-expanded', 'false');
 
-  const open = () => { wrap.classList.add('open'); btn.setAttribute('aria-expanded','true'); };
-  const close = () => { wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); };
+  const open = () => { wrap.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); };
+  const close = () => { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); };
 
   btn.addEventListener('click', (e) => {
     e.preventDefault(); e.stopPropagation();
     wrap.classList.contains('open') ? close() : open();
   });
+
+  // close on outside click / ESC
   document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 })();
 
 /* ======================= END MAIN JS ======================= */
 
-// === Responsive relocate of footer CTA (place after email on phones) ===
+// 4) Responsive relocate of footer CTA (place after email on phones)
 (function(){
   const MOBILE = window.matchMedia('(max-width:680px)');
   const contacts = document.querySelector('#contacts');
   if (!contacts) return;
 
-  const imprint = contacts.querySelector('.imprint');           // rights column
+  const imprint = contacts.querySelector('.imprint');           // right column
   const cta     = contacts.querySelector('.footer-cta');        // the button
   const emailEl = contacts.querySelector(
     '.contacts-grid .contact-a[href^="mailto"], ' +
