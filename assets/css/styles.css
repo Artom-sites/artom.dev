@@ -1560,3 +1560,38 @@ html.has-modal, body.has-modal{ overflow:hidden; }
 .app-card-link:focus-visible{outline:2px solid #111;outline-offset:5px}
 @media(max-width:760px){.apps-heading,.apps-grid{grid-template-columns:1fr}.apps-heading{gap:1rem}.app-card{min-height:300px;padding:1.5rem}.apps-section{padding-bottom:4rem}}
 @media(prefers-reduced-motion:reduce){.app-card,.app-card-link span:last-child{transition:none}}
+
+
+/* 2026 premium apps showcase */
+#apps.apps-section{background:#0d1013;color:#f7f7f7;padding:6rem 0 7rem;border-top:0}
+#apps .apps-intro{margin-bottom:3rem;max-width:790px}
+#apps .apps-intro .eyebrow{color:#aaa;letter-spacing:.23em}
+#apps .apps-intro h2{color:#fff;font-size:clamp(36px,5vw,68px);letter-spacing:-.045em;margin:1.2rem 0}
+#apps .apps-intro p{color:#a6a8ac;font-size:clamp(16px,1.5vw,20px);line-height:1.6;max-width:55ch}
+#apps .apps-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+#apps .app-card{background:linear-gradient(150deg,#191d22,#101316 65%);border:1px solid #34383d;border-radius:18px;padding:2rem;min-height:0;overflow:hidden;display:flex;flex-direction:column;color:#fff}
+#apps .app-card--songs{background:linear-gradient(150deg,#1d2023,#111417 65%)}
+#apps .app-card-top{display:flex;justify-content:space-between;color:#8e949a;font-size:10px;letter-spacing:.18em}
+#apps .app-card-title{display:flex;align-items:center;gap:1.1rem;margin:2.5rem 0 1rem}
+#apps .app-brand-icon{flex:none;width:70px;height:70px;border-radius:17px;display:grid;place-items:center;font-size:38px;font-weight:400;box-shadow:0 10px 25px #0004}
+#apps .app-brand-icon--choir{background:#080a0c;color:#e7e0cc;border:1px solid #444}
+#apps .app-brand-icon--songs{background:#f0ebe0;color:#aa8a50}
+#apps .app-card-title h3{font-size:clamp(28px,3vw,40px);font-weight:600;letter-spacing:-.04em;margin:0;color:#fff}
+#apps .app-card-title span{font-size:10px;letter-spacing:.17em;color:#91969d}
+#apps .app-description{font-size:15px;line-height:1.65;color:#aeb3b8;max-width:40ch;min-height:3.3em;margin:0}
+#apps .app-phone-stage{height:320px;position:relative;display:flex;justify-content:center;align-items:flex-start;margin:2.5rem 0 1.4rem;overflow:hidden}
+#apps .app-phone{position:relative;width:230px;height:480px;flex:none;border:6px solid #323841;border-radius:36px;background:#0d0d10;box-shadow:0 25px 65px #000b, inset 0 0 0 2px #656970;transform:rotate(-8deg);padding:23px 10px 12px;box-sizing:border-box}
+#apps .app-card--songs .app-phone{transform:rotate(8deg);background:#f4f4f8}
+#apps .app-phone-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:75px;height:18px;border-radius:12px;background:#000;z-index:2}
+#apps .app-phone-ui{padding-top:25px;font-size:11px;color:#f5f5f5}
+#apps .app-phone--light .app-phone-ui{color:#141414}
+#apps .app-ui-head{font-size:19px;font-weight:700;margin:0 0 22px;display:flex;justify-content:space-between}
+#apps .app-ui-tabs{padding:10px;border:1px solid #34343a;border-radius:9px;margin-bottom:20px}
+#apps .app-ui-tabs span{float:right;color:#a7a7a7}
+#apps .app-ui-heading{font-size:14px;font-weight:700;margin-bottom:13px}
+#apps .app-ui-line{padding:13px 8px;border-bottom:1px solid #ffffff1c;display:flex;justify-content:space-between;gap:5px;white-space:nowrap;overflow:hidden;font-size:10px}
+#apps .app-phone--light .app-ui-line{background:#fff;border-bottom:1px solid #ddd;padding:14px 7px}
+#apps .app-card-link{display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#fff;border:1px solid #bfa16b;border-radius:40px;padding:1rem 1.3rem;font-size:12px;font-weight:600;letter-spacing:.03em;transition:background .2s,color .2s}
+#apps .app-card-link:hover{background:#cbb07a;color:#111}
+#apps .app-card-link span{font-size:20px}
+@media(max-width:760px){#apps.apps-section{padding:4rem 0}#apps .apps-grid{grid-template-columns:1fr}#apps .app-card{padding:1.4rem;border-radius:14px}#apps .app-card-title{margin:1.8rem 0 1rem}#apps .app-phone-stage{height:290px}}
