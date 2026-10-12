@@ -1595,3 +1595,28 @@ html.has-modal, body.has-modal{ overflow:hidden; }
 #apps .app-card-link:hover{background:#cbb07a;color:#111}
 #apps .app-card-link span{font-size:20px}
 @media(max-width:760px){#apps.apps-section{padding:4rem 0}#apps .apps-grid{grid-template-columns:1fr}#apps .app-card{padding:1.4rem;border-radius:14px}#apps .app-card-title{margin:1.8rem 0 1rem}#apps .app-phone-stage{height:290px}}
+
+
+/* Editorial product showcase — consistent with existing case studies */
+#apps.apps-section{background:#fff;color:#111;border-top:1px solid #e6e6e6;padding:6rem 0 7rem}
+#apps .eyebrow{color:#777}
+#apps .products-intro{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:end;margin:1.5rem 0 3.5rem}
+#apps .products-intro h2{font-family:'Space Grotesk',sans-serif;color:#0e0e0e;font-size:clamp(30px,3.8vw,52px);margin:0}
+#apps .products-intro p{font-size:16px;color:#555;margin:0;max-width:46ch}
+#apps .products-list{border-top:1px solid #e6e6e6}
+#apps .product-feature{display:grid;grid-template-columns:1fr 1fr;gap:5%;align-items:center;padding:3rem 0;border-bottom:1px solid #e6e6e6}
+#apps .product-feature:nth-child(even) .product-feature-copy{order:2}
+#apps .product-feature:nth-child(even) .product-visual{order:1}
+#apps .product-number{font-size:11px;letter-spacing:.2em;color:#888;margin-bottom:2rem}
+#apps .product-heading{display:flex;gap:1.2rem;align-items:center;margin-bottom:1rem}
+#apps .product-heading h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,3.4vw,46px);font-weight:600;letter-spacing:-.035em;margin:0}
+#apps .product-icon{width:64px;height:64px;object-fit:cover;border-radius:15px;background:#f1f1f1}
+#apps .product-feature-copy>p{font-size:16px;color:#555;line-height:1.7;max-width:36ch;margin:0 0 2rem}
+#apps .product-store-link{gap:1rem;white-space:normal}
+#apps .product-visual{background:#f4f4f3;min-height:340px;max-height:470px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+#apps .product-feature:nth-child(2) .product-visual{background:#f5f5f7}
+#apps .product-shot{display:none;height:410px;max-width:80%;object-fit:contain;object-position:center;filter:drop-shadow(0 12px 18px rgba(0,0,0,.10))}
+#apps .product-visual.has-image .product-shot{display:block}
+#apps .product-image-fallback{font-size:clamp(40px,5vw,75px);font-weight:600;letter-spacing:-.05em;color:#d0d0d0}
+#apps .product-visual.has-image .product-image-fallback{display:none}
+@media(max-width:760px){#apps.apps-section{padding:4rem 0}#apps .products-intro,#apps .product-feature{grid-template-columns:1fr;gap:1.5rem}#apps .products-intro{margin-bottom:2rem}#apps .product-feature{padding:2.5rem 0}#apps .product-feature:nth-child(even) .product-feature-copy,#apps .product-feature:nth-child(even) .product-visual{order:initial}#apps .product-number{margin-bottom:1.3rem}#apps .product-visual{min-height:300px}#apps .product-shot{height:350px}}
