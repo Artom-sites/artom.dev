@@ -211,20 +211,18 @@
     const next=carousel.querySelector('.product-carousel-next');
     const progress=carousel.querySelector('.product-carousel-progress');
     function activeIndex(){
-      let best=0,dist=Infinity;
-      slides.forEach(function(slide,i){const d=Math.abs(slide.offsetLeft-track.offsetLeft-track.scrollLeft);if(d<dist){dist=d;best=i;}});
-      return best;
+      return Math.max(0,Math.min(slides.length-1,Math.round(track.scrollLeft / Math.max(track.clientWidth,1))));
     }
     function update(){
       const at=activeIndex();
-      prev.disabled=at<=0;
-      next.disabled=at>=slides.length-1;
+      prev.disabled=at===0;
+      next.disabled=at===slides.length-1;
       progress.textContent=String(at+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
     }
     function go(delta){
       const at=Math.max(0,Math.min(slides.length-1,activeIndex()+delta));
-      track.scrollTo({left:slides[at].offsetLeft-slides[0].offsetLeft,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
-      window.setTimeout(update,330);
+      track.scrollTo({left:at*track.clientWidth,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+      window.setTimeout(update,350);
     }
     prev.addEventListener('click',function(){go(-1);});
     next.addEventListener('click',function(){go(1);});
