@@ -1560,3 +1560,8 @@ html.has-modal, body.has-modal{ overflow:hidden; }
 .app-card-link:focus-visible{outline:2px solid #111;outline-offset:5px}
 @media(max-width:760px){.apps-heading,.apps-grid{grid-template-columns:1fr}.apps-heading{gap:1rem}.app-card{min-height:300px;padding:1.5rem}.apps-section{padding-bottom:4rem}}
 @media(prefers-reduced-motion:reduce){.app-card,.app-card-link span:last-child{transition:none}}
+
+/* Portfolio listing available for purchase */
+.case-for-sale .case-sale-badge{position:absolute;top:1.2rem;left:1.2rem;z-index:5;display:inline-flex;padding:.55rem .8rem;background:#cbb07a;color:#111;font:700 11px/1 'Space Grotesk',sans-serif;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.case-for-sale .bg img{object-position:center top}
+@media(max-width:680px){.case-for-sale .case-sale-badge{top:.75rem;left:.75rem;font-size:10px;padding:.45rem .65rem}}
