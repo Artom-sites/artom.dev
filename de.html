@@ -188,27 +188,9 @@
       </section>
 
       <!-- MOBILE APPS -->
-      <section id="apps" class="section apps-section">
-        <div class="container">
-          <div class="apps-intro"><span class="eyebrow">INDEPENDENT PRODUCTS / IOS</span><h2 class="font-title type-h2">Eigene Apps</h2><p>Zwei Produkte, die ich von der Idee bis zur Veröffentlichung im App Store entwickelt habe.</p></div>
-          <div class="apps-grid">
-            <article class="app-card app-card--choir">
-              <div class="app-card-top"><span>01 / PRODUCT</span><span>IOS ↗</span></div>
-              <div class="app-card-title"><div class="app-brand-icon app-brand-icon--choir" aria-hidden="true">𝄞</div><div><h3>MyChoir</h3><span>CHOIR MANAGEMENT</span></div></div>
-              <p class="app-description">Chororganisation, Repertoire, Noten und Proben an einem Ort.</p>
-              <div class="app-phone-stage"><div class="app-phone app-phone--dark"><div class="app-phone-island"></div><div class="app-phone-ui"><div class="app-ui-head">MyChoir <span>◉</span></div><div class="app-ui-tabs">Репертуар <span>Архів</span></div><div class="app-ui-heading">19 пісень</div><div class="app-ui-line">♪ &nbsp; А Мария стояла у гроба</div><div class="app-ui-line">♪ &nbsp; А я знаю</div><div class="app-ui-line">♪ &nbsp; Біль і плач душі</div><div class="app-ui-line">♪ &nbsp; Він воскрес!</div><div class="app-ui-line">♪ &nbsp; Воскресіння Христа</div></div></div></div>
-              <a class="app-card-link" href="https://apps.apple.com/us/app/mychoir/id6759878768" target="_blank" rel="noopener noreferrer">Im App Store ansehen <span aria-hidden="true">↗</span></a>
-            </article>
-            <article class="app-card app-card--songs">
-              <div class="app-card-top"><span>02 / PRODUCT</span><span>IOS ↗</span></div>
-              <div class="app-card-title"><div class="app-brand-icon app-brand-icon--songs" aria-hidden="true">♫</div><div><h3>MySongs</h3><span>MUSIC & ANALYTICS</span></div></div>
-              <p class="app-description">Liedhistorie, Statistiken und ein gemeinsames Musikrepertoire.</p>
-              <div class="app-phone-stage"><div class="app-phone app-phone--light"><div class="app-phone-island"></div><div class="app-phone-ui"><div class="app-ui-head">Статистика</div><div class="app-ui-heading">Найчастіше</div><div class="app-ui-line">Отче наш що на небесах <b>2</b></div><div class="app-ui-line">Сьогодні, в день недільний <b>2</b></div><div class="app-ui-line">Тихий час вечірній <b>2</b></div><div class="app-ui-line">Ось зібрались знову ми <b>2</b></div><div class="app-ui-line">Біля ніг сиджу Ісуса <b>2</b></div></div></div></div>
-              <a class="app-card-link" href="https://apps.apple.com/us/app/mysongs/id6814960554" target="_blank" rel="noopener noreferrer">Im App Store ansehen <span aria-hidden="true">↗</span></a>
-            </article>
-          </div>
-        </div>
-      </section>
+      <section id="apps" class="section apps-section"><div class="container"><div class="eyebrow">SELECTED DIGITAL PRODUCTS / 2026</div><div class="products-intro"><h2 class="font-title type-h2">Eigene Apps</h2><p class="type-body">Neben Websites entwickle ich eigene Produkte — von der Idee bis zum Release.</p></div><div class="products-list"><article class="product-feature"><div class="product-feature-copy"><div class="product-number">01 / IOS APPLICATION</div><div class="product-heading"><img class="product-icon" data-app-icon="6759878768" alt="" width="64" height="64" loading="lazy"><h3>MyChoir</h3></div><p>Eine App für Chororganisation, Proben und Noten.</p><a class="btn-black product-store-link" href="https://apps.apple.com/us/app/mychoir/id6759878768" target="_blank" rel="noopener noreferrer">Im App Store ansehen <span aria-hidden="true">↗</span></a></div><div class="product-visual"><img class="product-shot" data-app-shot="6759878768" alt="MyChoir — iPhone app screenshot" loading="lazy"><div class="product-image-fallback" aria-hidden="true">MyChoir</div></div></article>
+<article class="product-feature"><div class="product-feature-copy"><div class="product-number">02 / IOS APPLICATION</div><div class="product-heading"><img class="product-icon" data-app-icon="6814960554" alt="" width="64" height="64" loading="lazy"><h3>MySongs</h3></div><p>Liedhistorie, Statistiken und eine gemeinsame Bibliothek für Gemeinden.</p><a class="btn-black product-store-link" href="https://apps.apple.com/us/app/mysongs/id6814960554" target="_blank" rel="noopener noreferrer">Im App Store ansehen <span aria-hidden="true">↗</span></a></div><div class="product-visual"><img class="product-shot" data-app-shot="6814960554" alt="MySongs — iPhone app screenshot" loading="lazy"><div class="product-image-fallback" aria-hidden="true">MySongs</div></div></article></div></div></section>
+      <script>(function(){const ids=['6759878768','6814960554'];Promise.all(ids.map(async id=>{try{const r=await fetch('https://itunes.apple.com/lookup?id='+id+'&country=us');if(!r.ok)return;const data=await r.json();const app=data.results&&data.results[0];if(!app)return;const icon=document.querySelector('[data-app-icon="'+id+'"]');const shot=document.querySelector('[data-app-shot="'+id+'"]');if(icon&&app.artworkUrl512)icon.src=app.artworkUrl512;if(shot){const url=(app.screenshotUrls&&app.screenshotUrls[0])||(app.ipadScreenshotUrls&&app.ipadScreenshotUrls[0]);if(url){shot.src=url;shot.onload=()=>shot.closest('.product-visual').classList.add('has-image')}}}catch(e){}}))})();</script>
 
       <!-- CONTACTS -->
       <section id="contacts" class="section">
