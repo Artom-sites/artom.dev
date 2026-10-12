@@ -1536,3 +1536,27 @@ html{ text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; }
 /* lock scroll when modal is open */
 html.has-modal, body.has-modal{ overflow:hidden; }
 /* ================================================================= */
+
+
+/* Independent iOS products — editorial showcase */
+.apps-section{padding-bottom:7rem}
+.apps-heading{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:end;margin:1.2rem 0 2.5rem}
+.apps-heading h2{margin:0}
+.apps-heading p{max-width:43ch;margin:0}
+.apps-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+.app-card{background:#f7f7f5;border:1px solid #e8e7e3;min-height:365px;padding:2rem;display:flex;flex-direction:column;transition:background .25s,border-color .25s}
+.app-card:nth-child(2){background:#f1f1ef}
+.app-card:hover{background:#eeece6;border-color:#cbb07a}
+.app-card-top,.app-card-link{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.app-index{font-size:11px;letter-spacing:.2em;color:#777}
+.app-mark{font-size:22px;color:#9c8b68}
+.app-card-body{margin:auto 0 2.5rem}
+.app-symbol{display:inline-flex;align-items:center;justify-content:center;width:68px;height:68px;border:1px solid #d9d4c9;background:#fff;font-size:34px;color:#161616;margin-bottom:2rem}
+.app-card h3{font:600 clamp(30px,3.6vw,48px)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.035em;margin:0 0 .8rem}
+.app-card p{font-size:15px;line-height:1.65;color:#555;max-width:35ch;margin:0}
+.app-card-link{border-top:1px solid #d4d1cb;padding-top:1.1rem;text-decoration:none;color:#111;font-size:12px;font-weight:600;letter-spacing:.11em;text-transform:uppercase}
+.app-card-link span:last-child{font-size:20px;transition:transform .2s}
+.app-card-link:hover span:last-child{transform:translate(3px,-3px)}
+.app-card-link:focus-visible{outline:2px solid #111;outline-offset:5px}
+@media(max-width:760px){.apps-heading,.apps-grid{grid-template-columns:1fr}.apps-heading{gap:1rem}.app-card{min-height:300px;padding:1.5rem}.apps-section{padding-bottom:4rem}}
+@media(prefers-reduced-motion:reduce){.app-card,.app-card-link span:last-child{transition:none}}
