@@ -1598,3 +1598,36 @@ html.has-modal, body.has-modal{ overflow:hidden; }
   #apps .product-carousel-arrow{width:32px;height:32px}
 }
 @media(prefers-reduced-motion:reduce){#apps .product-carousel-track{scroll-behavior:auto}}
+
+
+/* Available-for-purchase Webflow case — same card style as the portfolio */
+.case--for-sale .case-sale-badge{
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  z-index:5;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:.65rem .9rem;
+  background:var(--gold, #cbb07a);
+  color:#111;
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  font-weight:600;
+  font-size:11px;
+  line-height:1;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  border:1px solid rgba(0,0,0,.08);
+  pointer-events:none;
+}
+@media(min-width:900px){
+  .cases-grid>.case--for-sale:last-child:nth-child(odd){
+    grid-column:1/-1;
+    justify-self:center;
+    width:calc((100% - 3.2rem)/2);
+  }
+}
+@media(max-width:680px){
+  .case--for-sale .case-sale-badge{top:.75rem;right:.75rem;padding:.55rem .7rem;font-size:10px}
+}
