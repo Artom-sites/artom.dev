@@ -1,0 +1,29 @@
+{
+  "mychoir": {
+    "expected": 8,
+    "found": 9,
+    "saved": 8,
+    "files": [
+      "img/apps/mychoir-01.webp",
+      "img/apps/mychoir-02.webp",
+      "img/apps/mychoir-03.webp",
+      "img/apps/mychoir-04.webp",
+      "img/apps/mychoir-05.webp",
+      "img/apps/mychoir-06.webp",
+      "img/apps/mychoir-07.webp",
+      "img/apps/mychoir-08.webp"
+    ]
+  },
+  "mysongs": {
+    "expected": 5,
+    "found": 5,
+    "saved": 5,
+    "files": [
+      "img/apps/mysongs-01.webp",
+      "img/apps/mysongs-02.webp",
+      "img/apps/mysongs-03.webp",
+      "img/apps/mysongs-04.webp",
+      "img/apps/mysongs-05.webp"
+    ]
+  }
+}
